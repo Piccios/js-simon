@@ -13,7 +13,7 @@ playButton.addEventListener('click', function () {
 
 function generateNewGame(number) {
     containerElement.innerHTML = '';
-    const uniqueNumbers = getUniqueNumbers(5);
+    const uniqueNumbers = getUniqueNumbers(5, 1, 20);
 
     for (let i = 0; i < number; i++) {
         const newDiv = document.createElement('article');
@@ -25,14 +25,14 @@ function generateNewGame(number) {
 
 // function to get unique numbers
 
-function getUniqueNumbers(numberofCells) {
+function getUniqueNumbers(numberofCells, min, max) {
     let numbers = [];
     while (numbers.lenght < numberofCells) {
         let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
         if (!numbers.includes(randomNumber)) {
             numbers.push(randomNumber);
         }
-    }
+    } return numbers;
 }
 
 
