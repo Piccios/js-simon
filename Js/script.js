@@ -7,7 +7,8 @@ const containerElement = document.querySelector('.container');
 const playButton = document.querySelector('button#play');
 
 playButton.addEventListener('click', function () {
-    generateNewGame(5); countDown(30);
+    generateNewGame(5); 
+    countDown(30);
 });
 
 /**
@@ -17,12 +18,24 @@ playButton.addEventListener('click', function () {
 
 function generateNewGame(number) {
     containerElement.innerHTML = '';
+    const uniqueNumbers = getUniqueNumbers(number, 1, 20);
+
     for (let i = 0; i < number; i++) {
         const newDiv = document.createElement('article');
         newDiv.classList.add('box');
+        newDiv.textContent = uniqueNumbers[i];
         containerElement.appendChild(newDiv);
     }
 }
+
+function hideNumbers() {
+    const boxes = document.querySelectorAll('.box');
+    boxes.forEach(function(box) {
+        box.style.display = 'none';
+    })
+}
+
+
 
 /**
  * 
