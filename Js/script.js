@@ -1,7 +1,5 @@
 
 
-
-// creo 5 caselle che posizionero' al centro del main 
 const containerElement = document.querySelector('.container');
 
 const playButton = document.querySelector('button#play');
