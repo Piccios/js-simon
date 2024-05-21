@@ -5,22 +5,22 @@ const containerElement = document.querySelector('.container');
 const playButton = document.querySelector('button#play');
 
 playButton.addEventListener('click', function () {
-    generateNewGame(5); 
-    countDown(30);
+    generateNewGame(5);
+    countDown(5);
 });
 
 // new game function
 
 function generateNewGame(number) {
     containerElement.innerHTML = '';
-    const uniqueNumbers = getUniqueNumbers(5, 1, 20);
-
+    let uniqueNumbers = getUniqueNumbers(5, 1, 20);
     for (let i = 0; i < number; i++) {
         const newDiv = document.createElement('article');
         newDiv.classList.add('box');
         newDiv.textContent = uniqueNumbers[i];
         containerElement.appendChild(newDiv);
     }
+    return uniqueNumbers;
 }
 
 // function to get unique numbers
@@ -48,7 +48,8 @@ function countDown(time) {
             clearInterval(interval);
             hideNumbers();
             alert('Time is up! Now guess the 5 numbers!');
-            getUserGuess();
+            const userNumbers = getUserGuess()
+            checkUserGuess(userNumbers, correctNumbers);
         }
     }, 1000);
 }
@@ -58,26 +59,38 @@ function countDown(time) {
 function hideNumbers() {
     const boxes = document.querySelectorAll('.box');
     boxes.forEach(box => {
-        box.textContent = ''; 
+        box.textContent = '';
     });
 }
 
 // Function that pops up prompts for user's guess
 
-function getUserGuess(){
-let userNumbers = [];
+function getUserGuess() {
+    let userNumbers = [];
 
-while (userNumbers.length < 5) {
-    let num = parseInt(prompt(`What is your guess? (${userNumbers.length + 1}/5):`), 10);
-    if (isNaN(num)) {
-        alert("Please, insert a valid number:");
-        continue;
-    }
-    if (userNumbers.includes(num)) {
-        alert("This number has already been inserted, please try again:");
-    } else {
-        userNumbers.push(num);
-    }
+    while (userNumbers.length < 5) {
+        let num = parseInt(prompt(`What is your guess? (${userNumbers.length + 1}/5):`), 10);
+        if (isNaN(num)) {
+            alert("Please, insert a valid number:");
+            continue;
+        }
+        if (userNumbers.includes(num)) {
+            alert("This number has already been inserted, please try again:");
+        } else {
+            userNumbers.push(num);
+        }
+    } return userNumbers;
 }
-console.log("Your numbers are:", userNumbers);
+
+
+// Function to check the user's guesses against the correct numbers
+
+function checkUserGuess(userNumbers, numbers) {
+    let correctGuesses = 0;
+    userNumbers.forEach(num => {
+        if (numbers.includes(num)) {
+            correctGuesses++;
+        }
+    });
+    alert(`You guessed ${correctGuesses} number(s) correctly!`);
 }
