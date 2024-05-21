@@ -6,7 +6,7 @@ const playButton = document.querySelector('button#play');
 
 playButton.addEventListener('click', function () {
     generateNewGame(5); 
-    countDown(5);
+    countDown(30);
 });
 
 // new game function
@@ -27,7 +27,7 @@ function generateNewGame(number) {
 
 function getUniqueNumbers(numberofCells, min, max) {
     let numbers = [];
-    while (numbers.lenght < numberofCells) {
+    while (numbers.length < numberofCells) {
         let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
         if (!numbers.includes(randomNumber)) {
             numbers.push(randomNumber);

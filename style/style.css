@@ -32,5 +32,6 @@ article.box{
     border: 3px solid rgb(31, 125, 128);
     margin: 3rem 1rem;
     background-color: rgb(60, 237, 255);
-    color: rgb(60, 224, 255);
+    color: blue;
+
 }
