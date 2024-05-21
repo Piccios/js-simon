@@ -1,16 +1,16 @@
 let userNumbers = [];
 
-while (numbers.length < 5) {
-    let num = parseInt(prompt(`Inserisci un numero (${numbers.length + 1}/5):`), 10);
+while (userNumbers.length < 5) {
+    let num = parseInt(prompt(`What is your guess? (${userNumbers.length + 1}/5):`), 10);
     if (isNaN(num)) {
-        alert("Per favore, inserisci un numero valido.");
+        alert("Please, insert a valid number:");
         continue;
     }
-    if (numbers.includes(num)) {
-        alert("Il numero è già stato inserito. Inserisci un numero diverso.");
+    if (userNumbers.includes(num)) {
+        alert("This number has already been inserted, please try again:");
     } else {
-        numbers.push(num);
+        userNumbers.push(num);
     }
 }
 
-console.log("I numeri inseriti sono:", userNumbers);
+console.log("Your numbers are:", userNumbers);
