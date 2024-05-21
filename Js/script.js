@@ -7,8 +7,13 @@ const containerElement = document.querySelector('.container');
 const playButton = document.querySelector('button#play');
 
 playButton.addEventListener('click', function () {
-    generateNewGame(5);
+    generateNewGame(5); countDown(30);
 });
+
+/**
+ * 
+ * @param {*} number 
+ */
 
 function generateNewGame(number) {
     containerElement.innerHTML = '';
@@ -17,12 +22,19 @@ function generateNewGame(number) {
         newDiv.classList.add('box');
         containerElement.appendChild(newDiv);
     }
-    
-    
 }
 
+/**
+ * 
+ * @param {*} time 
+ */
 
-
+function countDown(time) {
+    let timer = ((time) * 1000);
+    setTimeout(function() {
+        alert('Time is up! Now guess the 5 numbers!')
+    }  ,timer)
+}
 
 // let userNumbers = [];
 
