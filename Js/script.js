@@ -14,3 +14,5 @@ while (userNumbers.length < 5) {
 }
 
 console.log("Your numbers are:", userNumbers);
+
+
