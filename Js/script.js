@@ -90,7 +90,8 @@ function checkUserGuess(userNumbers, numbers) {
     userNumbers.forEach(num => {
         if (numbers.includes(num)) {
             correctGuesses++;
-        }
-    });
+        } else 
+        alert(`Wrong! Try again!`)
+    })
     alert(`You guessed ${correctGuesses} number(s) correctly!`);
 }
