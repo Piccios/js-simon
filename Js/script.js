@@ -4,6 +4,8 @@ const containerElement = document.querySelector('.container');
 
 const playButton = document.querySelector('button#play');
 
+let correctNumbers = [];
+
 playButton.addEventListener('click', function () {
     generateNewGame(5);
     countDown(5);
@@ -47,9 +49,11 @@ function countDown(time) {
         } else {
             clearInterval(interval);
             hideNumbers();
-            alert('Time is up! Now guess the 5 numbers!');
-            const userNumbers = getUserGuess()
-            checkUserGuess(userNumbers, correctNumbers);
+            setTimeout(() => {
+                alert('Time is up! Now guess the 5 numbers!');
+                const userNumbers = getUserGuess()
+                checkUserGuess(userNumbers, correctNumbers);
+            }, 100);
         }
     }, 1000);
 }
@@ -88,10 +92,9 @@ function getUserGuess() {
 function checkUserGuess(userNumbers, numbers) {
     let correctGuesses = 0;
     userNumbers.forEach(num => {
-        if (numbers.includes(num)) {
+        if (correctNumbers.includes(num)) {
             correctGuesses++;
-        } else 
-        alert(`Wrong! Try again!`)
+        }
     })
     alert(`You guessed ${correctGuesses} number(s) correctly!`);
 }
