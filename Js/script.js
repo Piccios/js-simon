@@ -7,7 +7,7 @@ const playButton = document.querySelector('button#play');
 let correctNumbers = [];
 
 playButton.addEventListener('click', function () {
-    generateNewGame(5);
+    correctNumbers = generateNewGame(5);
     countDown(5);
 });
 
@@ -89,7 +89,7 @@ function getUserGuess() {
 
 // Function to check the user's guesses against the correct numbers
 
-function checkUserGuess(userNumbers, numbers) {
+function checkUserGuess(userNumbers, correctNumbers) {
     let correctGuesses = 0;
     userNumbers.forEach(num => {
         if (correctNumbers.includes(num)) {
